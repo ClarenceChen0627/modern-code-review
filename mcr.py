@@ -1,3 +1,6 @@
+# 72510781 Chen Jiajun 陈嘉俊
+# 72510142 Zhang Bohan 张博涵
+
 def is_win(game):
     win = False
     # Check rows
