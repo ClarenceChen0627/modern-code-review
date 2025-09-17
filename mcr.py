@@ -1,5 +1,5 @@
-# 72510781 Chen Jiajun 陈嘉俊
-# 72510142 Zhang Bohan 张博涵
+# Author: Jiajun Chen(陈嘉俊), 72510781(ID), ClarenceChen0627(Github name)
+# Reviewer1: Bohan Zhang(张博涵), 72510142(ID), twisted29062(Github name)
 
 def is_win(game):
     win = False
