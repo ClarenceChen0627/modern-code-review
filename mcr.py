@@ -1,4 +1,5 @@
 def is_win(game):
+    # 保持不变
     win = False
     # Check rows
     if game[0][0] == game[0][1] == game[0][2] and (game[0][0] == 'X' or game[0][0] == 'O'):
@@ -34,20 +35,42 @@ def main():
             print("Player 1: ", end="")
         else:
             print("Player 2: ", end="")
-        print("Which cell to mark? i:[1..3], j:[1..3]: ")
-        i, j = map(int, input().split())
-        i -= 1
-        j -= 1
+        
+        # 完善的输入处理逻辑
+        while True:
+            print("Which cell to mark? i:[1..3], j:[1..3]: ")
+            try:
+                # 尝试解析输入
+                i, j = map(int, input().split())
+                # 检查范围
+                if not (1 <= i <= 3 and 1 <= j <= 3):
+                    print("Error: i and j must be between 1 and 3. Try again.")
+                    continue
+                # 转换为0-based索引
+                i -= 1
+                j -= 1
+                # 检查单元格是否已被占用
+                if game[i][j] != ' ':
+                    print("Error: That cell is already occupied. Try again.")
+                    continue
+                # 所有验证通过，退出循环
+                break
+            except ValueError:
+                print("Error: Please enter two integers separated by space. Try again.")
+        
+        # 放置棋子
         if not turn:
             game[i][j] = 'X'
         else:
             game[i][j] = 'O'
+        
         if is_win(game):
             print("Win!")
-            break  # Terminate the game
-        if n == 8:  # All cells have been filled
+            break  # 游戏结束
+        if n == 8:  # 所有格子填满
             print("Tie!")
-        # Show the game board
+        
+        # 显示棋盘
         for row in game:
             print(" ".join(row))
 
