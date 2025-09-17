@@ -1,5 +1,4 @@
 def is_win(game):
-    # 保持不变
     win = False
     # Check rows
     if game[0][0] == game[0][1] == game[0][2] and (game[0][0] == 'X' or game[0][0] == 'O'):
@@ -64,15 +63,17 @@ def main():
         else:
             game[i][j] = 'O'
         
-        if is_win(game):
-            print("Win!")
-            break  # 游戏结束
-        if n == 8:  # 所有格子填满
-            print("Tie!")
-        
-        # 显示棋盘
+        # 显示当前棋盘（包括最后一步）
+        print("Current board:")
         for row in game:
             print(" ".join(row))
+        
+        # 检查游戏结束条件
+        if is_win(game):
+            print(f"Player {1 if not turn else 2} wins!")
+            break  # 游戏结束
+        if n == 8:  # 所有格子填满
+            print("It's a tie!")
 
 if __name__ == "__main__":
     main()
